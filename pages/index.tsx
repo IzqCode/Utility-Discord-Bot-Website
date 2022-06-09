@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() => {
     async function checkLoggedIn() {
       try {
-        await fetch('http://localhost:3000/auth/me', {
+        await fetch(`http://${process.env.NEXT_PUBLIC_API_ROOT}/auth/me`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -41,7 +41,7 @@ export default function Home() {
       }
       async function logIn() {
         try {
-          await fetch('http://localhost:3000/auth/login', {
+          await fetch(`http://${process.env.NEXT_PUBLIC_API_ROOT}/auth/login`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ export default function Home() {
 
   async function handleLogOut() {
     try {
-      await fetch('http://localhost:3000/auth/logout', {
+      await fetch(`http://${process.env.NEXT_PUBLIC_API_ROOT}/auth/logout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -87,7 +87,9 @@ export default function Home() {
       </Button>
       ) : (
         <Button
-          href="https://discord.com/api/oauth2/authorize?client_id=785782124577685525&redirect_uri=http%3A%2F%2Flocalhost%3A8080&response_type=token&scope=identify%20guilds"
+          href={`https://discord.com/api/oauth2/authorize?client_id=${
+            process.env.NEXT_PUBLIC_DISCORD_BOT_CLIENT_ID
+          }&redirect_uri=http%3A%2F%2Flocalhost%3A8080&response_type=token&scope=identify%20guilds`}
           variant="contained"
         >
           Log In
