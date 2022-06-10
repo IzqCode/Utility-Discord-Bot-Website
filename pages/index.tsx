@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() => {
     async function checkLoggedIn() {
       try {
-        await fetch(`http://${process.env.NEXT_PUBLIC_API_ROOT}/auth/me`, {
+        await fetch(`${process.env.NEXT_PUBLIC_API_ROOT}/auth/me`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -41,7 +41,7 @@ export default function Home() {
       }
       async function logIn() {
         try {
-          await fetch(`http://${process.env.NEXT_PUBLIC_API_ROOT}/auth/login`, {
+          await fetch(`${process.env.NEXT_PUBLIC_API_ROOT}/auth/login`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ export default function Home() {
 
   async function handleLogOut() {
     try {
-      await fetch(`http://${process.env.NEXT_PUBLIC_API_ROOT}/auth/logout`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_ROOT}/auth/logout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
