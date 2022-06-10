@@ -89,7 +89,9 @@ export default function Home() {
         <Button
           href={`https://discord.com/api/oauth2/authorize?client_id=${
             process.env.NEXT_PUBLIC_DISCORD_BOT_CLIENT_ID
-          }&redirect_uri=http%3A%2F%2Flocalhost%3A8080&response_type=token&scope=identify%20guilds`}
+          }&redirect_uri=${
+            encodeURIComponent(process.env.NEXT_PUBLIC_REDIRECT_URI!)
+          }&response_type=token&scope=identify%20guilds`}
           variant="contained"
         >
           Log In
